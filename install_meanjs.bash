@@ -26,9 +26,14 @@ echo "Install Grunt"
 apt-get update && sudo apt-get -y dist-upgrade
 npm install -g grunt grunt-cli grunt-contrib-clean grunt-replace grunt-contrib-concat grunt-contrib-watch grunt-contrib-jasmine grunt-contrib-connect grunt-saucelabs grunt-gitinfo
 
+git clone https://github.com/meanjs/mean.git meanjs
+cd meanjs
+npm install
 
 echo "install bower"
 npm install bower -g
+
+npm install -g yo
 
 
 echo "Set generator to run without sudo"
@@ -38,3 +43,5 @@ echo 'export PATH=$HOME/.node/bin:$PATH' >> ~/.bashrc
 
 # need sudo rights
 sudo npm install -g generator-meanjs
+
+
