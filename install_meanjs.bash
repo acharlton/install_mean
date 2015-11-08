@@ -1,47 +1,46 @@
 echo "Update & upgrade"
-apt-get update && apt-get upgrade -y && apt-get dist-upgrade -y
-echo "Install Nodejs"
+sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get dist-upgrade -y
+sudo apt-get -y install vim
 
-
-wget http://nodejs.org/dist/v4.2.1/node-v4.2.1-linux-x64.tar.gz
-sudo tar -C /usr/local --strip-components 1 -xzf node-v4.2.1-linux-x64.tar.gz
-
-#apt-get install curl
-#curl -sL https://deb.nodesource.com/setup | sudo bash -
-#apt-get install -y nodejs
+echo "install build essential"
 sudo apt-get -y install build-essential
 
+echo "Install Node"
+wget -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
+sudo apt-get install -y nodejs
 
-echo"Install Mongo DB"
+echo "Install Mongo DB"
 apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
 echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | sudo tee /etc/apt/sources.list.d/10gen.list
-apt-get update
-apt-get install mongodb-org
+sudo apt-get update
+sudo apt-get -y install mongodb-org
 
 echo "Install git"
-apt-get update
-apt-get install git
+sudo apt-get update
+sudo apt-get -y install git
 
 echo "Install Grunt"
-apt-get update && sudo apt-get -y dist-upgrade
+sudo apt-get update
 npm install -g grunt grunt-cli grunt-contrib-clean grunt-replace grunt-contrib-concat grunt-contrib-watch grunt-contrib-jasmine grunt-contrib-connect grunt-saucelabs grunt-gitinfo
 
+echo "Install meanjs"
 git clone https://github.com/meanjs/mean.git meanjs
 cd meanjs
 npm install
 
+# need sudo rights
 echo "install bower"
-npm install bower -g
+npm install -g bower yo generator-meanjs
 
-npm install -g yo
-
+#cd ..
+#mkdir mean-app
+#cd mean-app
+#yo meanjs
 
 echo "Set generator to run without sudo"
 echo prefix = ~/.node >> ~/.npmrc
 echo 'export PATH=$HOME/.node/bin:$PATH' >> ~/.bashrc
-. ~/.bashrc
+echo source ~/.bashrc
 
-# need sudo rights
-sudo npm install -g generator-meanjs
 
 
