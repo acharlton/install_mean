@@ -26,6 +26,7 @@ cd myapp
 npm install
 npm install --save sequelize
 npm install --save pg pg-hstore
+npm install --save passport
 
 
 # log into Postgres
