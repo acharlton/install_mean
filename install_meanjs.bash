@@ -1,13 +1,20 @@
-echo "Update & upgrade"
-sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get dist-upgrade -y
-sudo apt-get -y install vim
+# this works on ubunut 14.04
 
-echo "install build essential"
-sudo apt-get -y install build-essential
-
-echo "Install Node"
-wget -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
+echo "update"
+sudo apt-get update
+echo "Install node express express-generatorangular postgres postgis pgadmin3"
+curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
 sudo apt-get install -y nodejs
+npm install -g express-generator@4
+npm install express
+sudo npm install -g express-generator
+npm install angular@1.4.7
+sudo apt-get install postgresql postgresql-contrib
+sudo apt-get install postgis
+sudo apt-get install pgadmin3
+
+# log into Postgres
+sudo -u postgres psql postgres
 
 echo "Install Mongo DB"
 apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
@@ -19,28 +26,28 @@ echo "Install git"
 sudo apt-get update
 sudo apt-get -y install git
 
-echo "Install Grunt"
-sudo apt-get update
-npm install -g grunt grunt-cli grunt-contrib-clean grunt-replace grunt-contrib-concat grunt-contrib-watch grunt-contrib-jasmine grunt-contrib-connect grunt-saucelabs grunt-gitinfo
+#echo "Install Grunt"
+#sudo apt-get update
+#npm install -g grunt grunt-cli grunt-contrib-clean grunt-replace grunt-contrib-concat grunt-contrib-watch grunt-contrib-jasmine grunt-contrib-connect grunt-saucelabs grunt-gitinfo
 
-echo "Install meanjs"
-git clone https://github.com/meanjs/mean.git meanjs
-cd meanjs
-npm install
+#echo "Install meanjs"
+#git clone https://github.com/meanjs/mean.git meanjs
+#cd meanjs
+#npm install
 
 # need sudo rights
-echo "install bower"
-npm install -g bower yo generator-meanjs
+#echo "install bower"
+#npm install -g bower yo generator-meanjs
 
 #cd ..
 #mkdir mean-app
 #cd mean-app
 #yo meanjs
 
-echo "Set generator to run without sudo"
-echo prefix = ~/.node >> ~/.npmrc
-echo 'export PATH=$HOME/.node/bin:$PATH' >> ~/.bashrc
-echo source ~/.bashrc
+#echo "Set generator to run without sudo"
+#echo prefix = ~/.node >> ~/.npmrc
+#echo 'export PATH=$HOME/.node/bin:$PATH' >> ~/.bashrc
+#echo source ~/.bashrc
 
 
 
