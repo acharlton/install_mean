@@ -1,5 +1,9 @@
 # this works on ubunut 14.04
 
+# create a directory for the vagrant box then run this in it....
+# vagrant init ubuntu/trusty64; vagrant up --provider virtualbox
+# once its downloaded vagrant ssh and add the follwoing code......
+
 echo "update"
 sudo apt-get update
 echo "Install node express express-generatorangular postgres postgis pgadmin3"
